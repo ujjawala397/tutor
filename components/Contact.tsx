@@ -100,7 +100,7 @@ export function Contact() {
                   whileHover={{ y: -8 }}
                   className="group"
                 >
-                  <div className="h-full relative rounded-2xl p-8 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl border border-white/20 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden cursor-pointer">
+                  <div className="h-full relative rounded-2xl p-8 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-200 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden cursor-pointer">
                     {/* Background gradient on hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
 
@@ -142,7 +142,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="group"
           >
-            <div className="h-full relative rounded-2xl p-8 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl border border-white/20 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden">
+            <div className="h-full relative rounded-2xl p-8 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-200 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden">
               {/* Background gradient on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
 

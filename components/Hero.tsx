@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { ArrowRight, Star, Users, Award, TrendingUp } from 'lucide-react'
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export function Hero() {
   const router = useRouter();
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -19,12 +19,12 @@ export function Hero() {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.8, ease: 'easeOut' as const },
     },
   }
 
@@ -119,7 +119,7 @@ export function Hero() {
         {/* Right - Illustration */}
         <motion.div
   variants={itemVariants}
-  className="relative flex items-center justify-center w-full h-[320px] sm:h-[420px] md:h-[500px] lg:h-[600px]"
+  className="relative flex items-center justify-center w-full h-[420px] sm:h-[520px] md:h-[620px] lg:h-[720px]"
 >
   <Image
     src="/images/banner.png"

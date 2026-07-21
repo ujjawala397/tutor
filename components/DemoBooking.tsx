@@ -67,7 +67,7 @@ export function DemoBooking() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative rounded-2xl border border-white/20 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl overflow-hidden p-8 lg:p-12"
+            className="relative rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] overflow-hidden p-8 lg:p-12"
           >
           {/* Background gradient on hover */}
           <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
@@ -78,7 +78,7 @@ export function DemoBooking() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute inset-0 flex items-center justify-center bg-white/95 backdrop-blur-sm z-50 rounded-2xl"
+              className="absolute inset-0 flex items-center justify-center bg-white z-50 rounded-2xl"
             >
               <div className="text-center space-y-4">
                 <motion.div

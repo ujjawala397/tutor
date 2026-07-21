@@ -121,7 +121,7 @@ export function Tutors() {
               whileHover={{ y: -12, transition: { duration: 0.3 } }}
               className="group"
             >
-              <div className="h-full rounded-2xl border border-white/20 bg-gradient-to-b from-white/60 to-white/30 backdrop-blur-xl overflow-hidden hover:border-primary/50 transition-all duration-300 relative"
+              <div className="h-full rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] overflow-hidden hover:border-primary/50 transition-all duration-300 relative"
               >
                 {/* Background gradient on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
