@@ -1,24 +1,29 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Mail, Share2, Heart, Link, Globe } from 'lucide-react'
+import { motion } from "framer-motion";
+import { Mail, Share2, Heart, Link, Globe } from "lucide-react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    Company: ['About Us', 'Blog', 'Careers', 'Press'],
-    Courses: ['Mathematics', 'Science', 'Programming', 'AI/ML'],
-    Resources: ['Student Guide', 'Parent Guide', 'Study Materials', 'Success Stories'],
-    Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Contact'],
-  }
+    Company: ["About Us", "Blog", "Careers", "Press"],
+    Courses: ["Mathematics", "Science", "Programming", "AI/ML"],
+    Resources: [
+      "Student Guide",
+      "Parent Guide",
+      "Study Materials",
+      "Success Stories",
+    ],
+    Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Contact"],
+  };
 
   const socialLinks = [
-    { icon: Share2, label: 'Facebook', href: '#' },
-    { icon: Heart, label: 'Twitter', href: '#' },
-    { icon: Link, label: 'LinkedIn', href: '#' },
-    { icon: Globe, label: 'Website', href: '#' },
-  ]
+    { icon: Share2, label: "Facebook", href: "#" },
+    { icon: Heart, label: "Twitter", href: "#" },
+    { icon: Link, label: "LinkedIn", href: "#" },
+    { icon: Globe, label: "Website", href: "#" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,7 +34,7 @@ export function Footer() {
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -38,7 +43,7 @@ export function Footer() {
       y: 0,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <footer className="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-slate-100 border-t border-slate-800/80">
@@ -50,8 +55,7 @@ export function Footer() {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
       >
-        <div className="relative rounded-2xl border border-slate-700/60 bg-white/95 text-slate-900 backdrop-blur-xl overflow-hidden p-8 lg:p-12"
-        >
+        <div className="relative rounded-2xl border border-slate-700/60 bg-white/95 text-slate-900 backdrop-blur-xl overflow-hidden p-8 lg:p-12">
           {/* Background animation */}
           <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-primary to-secondary blur-3xl" />
 
@@ -103,14 +107,14 @@ export function Footer() {
                 </span>
               </div>
               <p className="text-slate-300 leading-relaxed text-sm">
-                Empowering students to excel in school and technology through expert
-                guidance and personalized learning.
+                Empowering students to excel in school and technology through
+                expert guidance and personalized learning.
               </p>
 
               {/* Social Links */}
               <div className="flex gap-3 pt-4">
                 {socialLinks.map((link, index) => {
-                  const Icon = link.icon
+                  const Icon = link.icon;
                   return (
                     <motion.a
                       key={index}
@@ -120,7 +124,7 @@ export function Footer() {
                     >
                       <Icon size={18} />
                     </motion.a>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -176,12 +180,12 @@ export function Footer() {
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ type: 'spring', stiffness: 100 }}
+        transition={{ type: "spring", stiffness: 100 }}
         viewport={{ once: true }}
         className="fixed bottom-8 right-8 z-40 hidden lg:block"
       >
         <motion.a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/919412131680"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all"
@@ -190,5 +194,5 @@ export function Footer() {
         </motion.a>
       </motion.div>
     </footer>
-  )
+  );
 }
