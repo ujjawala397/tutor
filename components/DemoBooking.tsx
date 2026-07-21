@@ -11,7 +11,6 @@ type FormData = {
   phone: string
   email: string
   grade: string
-  board: string
   subject: string
   time: string
   mode: string
@@ -186,22 +185,6 @@ export function DemoBooking() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Board *</label>
-                <select
-                  {...register('board', { required: 'Board is required' })}
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
-                >
-                  <option value="">Select Board</option>
-                  <option value="CBSE">CBSE</option>
-                  <option value="ICSE">ICSE</option>
-                  <option value="State Board">State Board</option>
-                </select>
-                {errors.board && (
-                  <span className="text-red-500 text-sm">{errors.board.message}</span>
-                )}
-              </div>
-
-              <div>
                 <label className="block text-sm font-semibold text-foreground mb-2">
                   Subject Interested *
                 </label>
@@ -219,25 +202,6 @@ export function DemoBooking() {
                   <span className="text-red-500 text-sm">{errors.subject.message}</span>
                 )}
               </div>
-            </div>
-
-            {/* Row 4 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">
-                  Preferred Time *
-                </label>
-                <input
-                  {...register('time', { required: 'Time is required' })}
-                  type="text"
-                  placeholder="e.g., 5:00 PM - 6:00 PM"
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
-                />
-                {errors.time && (
-                  <span className="text-red-500 text-sm">{errors.time.message}</span>
-                )}
-              </div>
-
               <div>
                 <label className="block text-sm font-semibold text-foreground mb-2">Mode *</label>
                 <div className="flex gap-4">
@@ -257,6 +221,13 @@ export function DemoBooking() {
                   <span className="text-red-500 text-sm">{errors.mode.message}</span>
                 )}
               </div>
+            </div>
+
+            {/* Row 4 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+
+              
             </div>
 
             {/* Message */}

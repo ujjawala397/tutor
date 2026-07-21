@@ -122,12 +122,12 @@ export function Hero() {
   className="relative flex items-center justify-center w-full h-[420px] sm:h-[520px] md:h-[620px] lg:h-[720px]"
 >
   <Image
-    src="/images/banner.png"
+    src="/images/banner1.png"
     alt="Elite Tutoring Banner"
     fill
     priority
     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
-    className="object-contain"
+    className="object-contain object-[center_-100px]"
   />
 </motion.div>
         
