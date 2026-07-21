@@ -1,45 +1,45 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react'
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export function Contact() {
   const contactInfo = [
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+91 9876543210',
-      href: 'tel:+919876543210',
-      color: 'from-blue-400 to-blue-600',
+      label: "Phone",
+      value: "+91 9412131680",
+      href: "tel:+919412131680",
+      color: "from-blue-400 to-blue-600",
     },
     {
       icon: Mail,
-      label: 'Email',
-      value: 'info@tutoring.com',
-      href: 'mailto:info@tutoring.com',
-      color: 'from-purple-400 to-purple-600',
+      label: "Email",
+      value: "info@tutoring.com",
+      href: "mailto:info@tutoring.com",
+      color: "from-purple-400 to-purple-600",
     },
     {
       icon: MessageCircle,
-      label: 'WhatsApp',
-      value: '+91 9876543210',
-      href: 'https://wa.me/919876543210',
-      color: 'from-green-400 to-green-600',
+      label: "WhatsApp",
+      value: "+91 9412131680",
+      href: "https://wa.me/919412131680",
+      color: "from-green-400 to-green-600",
     },
     {
       icon: MapPin,
-      label: 'Address',
-      value: '123 Education Street, Delhi 110001',
-      href: '#',
-      color: 'from-pink-400 to-pink-600',
+      label: "Address",
+      value: "123 Education Street, Delhi 110001",
+      href: "#",
+      color: "from-pink-400 to-pink-600",
     },
-  ]
+  ];
 
   const hours = [
-    { day: 'Monday - Friday', time: '9:00 AM - 6:00 PM' },
-    { day: 'Saturday', time: '10:00 AM - 4:00 PM' },
-    { day: 'Sunday', time: 'Closed' },
-  ]
+    { day: "Monday - Friday", time: "9:00 AM - 6:00 PM" },
+    { day: "Saturday", time: "10:00 AM - 4:00 PM" },
+    { day: "Sunday", time: "Closed" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -50,7 +50,7 @@ export function Contact() {
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -59,7 +59,7 @@ export function Contact() {
       y: 0,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -91,7 +91,7 @@ export function Contact() {
             className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
             {contactInfo.map((info, index) => {
-              const Icon = info.icon
+              const Icon = info.icon;
               return (
                 <motion.a
                   key={index}
@@ -100,8 +100,7 @@ export function Contact() {
                   whileHover={{ y: -8 }}
                   className="group"
                 >
-                  <div className="h-full relative rounded-2xl p-8 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl border border-white/20 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden cursor-pointer"
-                  >
+                  <div className="h-full relative rounded-2xl p-8 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl border border-white/20 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden cursor-pointer">
                     {/* Background gradient on hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
 
@@ -131,7 +130,7 @@ export function Contact() {
                     </div>
                   </div>
                 </motion.a>
-              )
+              );
             })}
           </motion.div>
 
@@ -143,8 +142,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="group"
           >
-            <div className="h-full relative rounded-2xl p-8 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl border border-white/20 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden"
-            >
+            <div className="h-full relative rounded-2xl p-8 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl border border-white/20 hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20 overflow-hidden">
               {/* Background gradient on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
 
@@ -165,9 +163,16 @@ export function Contact() {
                 {/* Hours */}
                 <div className="space-y-3">
                   {hours.map((hour, index) => (
-                    <div key={index} className="flex justify-between items-start">
-                      <span className="font-semibold text-foreground">{hour.day}</span>
-                      <span className="text-foreground/70 text-sm text-right">{hour.time}</span>
+                    <div
+                      key={index}
+                      className="flex justify-between items-start"
+                    >
+                      <span className="font-semibold text-foreground">
+                        {hour.day}
+                      </span>
+                      <span className="text-foreground/70 text-sm text-right">
+                        {hour.time}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -180,9 +185,7 @@ export function Contact() {
             </div>
           </motion.div>
         </div>
-
-        
       </div>
     </section>
-  )
+  );
 }
