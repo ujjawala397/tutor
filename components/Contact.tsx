@@ -181,24 +181,7 @@ export function Contact() {
           </motion.div>
         </div>
 
-        {/* Map Placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative rounded-2xl overflow-hidden border border-white/20 h-96 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl group hover:border-primary/50 transition-all group-hover:shadow-2xl group-hover:shadow-primary/20"
-        >
-          {/* Background gradient on hover */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
-
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center space-y-2">
-              <MapPin size={48} className="text-primary mx-auto opacity-50" />
-              <p className="text-foreground/70">Map location coming soon</p>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   )

@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Star, Users, Award, TrendingUp } from 'lucide-react'
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 
 export function Hero() {
+  const router = useRouter();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -77,6 +81,7 @@ export function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+              onClick={() => router.push("/#book-demo")}
             >
               Book FREE Demo
               <ArrowRight size={20} />
@@ -113,43 +118,19 @@ export function Hero() {
 
         {/* Right - Illustration */}
         <motion.div
-          variants={itemVariants}
-          className="relative h-96 sm:h-[500px] flex items-center justify-center"
-        >
-          <div className="absolute inset-0 rounded-2xl overflow-hidden">
-            {/* Decorative shape */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 rounded-2xl" />
-
-            {/* Floating cards animation */}
-            <motion.div
-              animate={{ y: [-20, 20, -20] }}
-              transition={{ duration: 6, repeat: Infinity }}
-              className="absolute top-12 right-8 w-32 h-40 bg-white rounded-xl shadow-xl p-4 border border-white/20"
-            >
-              <div className="w-full h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-2" />
-              <p className="text-sm font-semibold text-foreground">Learn Programming</p>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [20, -20, 20] }}
-              transition={{ duration: 6, repeat: Infinity, delay: 1 }}
-              className="absolute bottom-12 left-8 w-32 h-40 bg-white rounded-xl shadow-xl p-4 border border-white/20"
-            >
-              <div className="w-full h-24 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg mb-2" />
-              <p className="text-sm font-semibold text-foreground">Master Math</p>
-            </motion.div>
-
-            <motion.div
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <div className="w-24 h-24 bg-gradient-to-br from-accent to-secondary rounded-full shadow-2xl flex items-center justify-center text-4xl">
-                🎓
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+  variants={itemVariants}
+  className="relative flex items-center justify-center w-full h-[320px] sm:h-[420px] md:h-[500px] lg:h-[600px]"
+>
+  <Image
+    src="/images/banner.png"
+    alt="Elite Tutoring Banner"
+    fill
+    priority
+    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
+    className="object-contain"
+  />
+</motion.div>
+        
       </motion.div>
     </section>
   )

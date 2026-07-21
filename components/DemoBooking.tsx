@@ -41,32 +41,34 @@ export function DemoBooking() {
   }
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="book-demo" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Book Your <span className="gradient-text">FREE Demo Class</span>
-          </h2>
-          <p className="text-lg text-foreground/60">
-            Fill the form below and our team will contact you within 24 hours
-          </p>
-        </motion.div>
+        
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
+              Book Your <span className="gradient-text">FREE Demo Class</span>
+            </h2>
+            <p className="text-lg text-foreground/60">
+              Fill the form below and our team will contact you within 24 hours
+            </p>
+          </motion.div>
 
-        {/* Form Card */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative rounded-2xl border border-white/20 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl overflow-hidden p-8 lg:p-12"
-        >
+          {/* Form Card */}
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative rounded-2xl border border-white/20 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-xl overflow-hidden p-8 lg:p-12"
+          >
           {/* Background gradient on hover */}
           <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
 
@@ -107,7 +109,7 @@ export function DemoBooking() {
                   {...register('studentName', { required: 'Student name is required' })}
                   type="text"
                   placeholder="Enter student name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.studentName && (
                   <span className="text-red-500 text-sm">{errors.studentName.message}</span>
@@ -122,7 +124,7 @@ export function DemoBooking() {
                   {...register('parentName', { required: 'Parent name is required' })}
                   type="text"
                   placeholder="Enter parent name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.parentName && (
                   <span className="text-red-500 text-sm">{errors.parentName.message}</span>
@@ -140,7 +142,7 @@ export function DemoBooking() {
                   {...register('phone', { required: 'Phone is required' })}
                   type="tel"
                   placeholder="Enter phone number"
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.phone && (
                   <span className="text-red-500 text-sm">{errors.phone.message}</span>
@@ -155,7 +157,7 @@ export function DemoBooking() {
                   {...register('email', { required: 'Email is required' })}
                   type="email"
                   placeholder="Enter email"
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.email && (
                   <span className="text-red-500 text-sm">{errors.email.message}</span>
@@ -169,7 +171,7 @@ export function DemoBooking() {
                 <label className="block text-sm font-semibold text-foreground mb-2">Grade *</label>
                 <select
                   {...register('grade', { required: 'Grade is required' })}
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 >
                   <option value="">Select Grade</option>
                   {Array.from({ length: 10 }, (_, i) => (
@@ -187,7 +189,7 @@ export function DemoBooking() {
                 <label className="block text-sm font-semibold text-foreground mb-2">Board *</label>
                 <select
                   {...register('board', { required: 'Board is required' })}
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 >
                   <option value="">Select Board</option>
                   <option value="CBSE">CBSE</option>
@@ -205,7 +207,7 @@ export function DemoBooking() {
                 </label>
                 <select
                   {...register('subject', { required: 'Subject is required' })}
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 >
                   <option value="">Select Subject</option>
                   <option value="Mathematics">Mathematics</option>
@@ -229,7 +231,7 @@ export function DemoBooking() {
                   {...register('time', { required: 'Time is required' })}
                   type="text"
                   placeholder="e.g., 5:00 PM - 6:00 PM"
-                  className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.time && (
                   <span className="text-red-500 text-sm">{errors.time.message}</span>
@@ -266,7 +268,7 @@ export function DemoBooking() {
                 {...register('message')}
                 placeholder="Any additional information or questions..."
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all resize-none"
               />
             </div>
 
@@ -276,11 +278,18 @@ export function DemoBooking() {
               whileTap={{ scale: 0.95 }}
               type="submit"
               className="w-full py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold font-display text-lg shadow-lg hover:shadow-2xl transition-all"
-            >
+              onClick={() => {
+                  document.getElementById("book-demo")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
               Book FREE Demo Class
             </motion.button>
           </form>
-        </motion.div>
+          </motion.div>
+        
       </div>
     </section>
   )
