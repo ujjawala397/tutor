@@ -55,35 +55,7 @@ export function Footer() {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
       >
-        <div className="relative rounded-2xl border border-slate-700/60 bg-white/95 text-slate-900 backdrop-blur-xl overflow-hidden p-8 lg:p-12">
-          {/* Background animation */}
-          <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-primary to-secondary blur-3xl" />
-
-          <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
-            <h3 className="text-3xl font-display font-bold text-slate-900">
-              Subscribe to Our <span className="gradient-text">Newsletter</span>
-            </h3>
-            <p className="text-slate-600">
-              Get updates on new courses, success stories, and exclusive offers
-            </p>
-
-            {/* Newsletter Form */}
-            <div className="flex gap-2 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:border-primary focus:outline-none transition-all"
-              />
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:shadow-lg transition-all"
-              >
-                Subscribe
-              </motion.button>
-            </div>
-          </div>
-        </div>
+        
       </motion.div>
 
       {/* Main Footer Content */}

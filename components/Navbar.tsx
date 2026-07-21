@@ -11,10 +11,8 @@ export function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'Courses', href: '#courses' },
     { name: 'Tutors', href: '#tutors' },
-    { name: 'Success Stories', href: '#reviews' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'FAQ', href: '#faq' },
-    { name: 'Contact', href: '#contact' },
   ]
 
   return (
@@ -58,7 +56,13 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow"
-          >
+            onClick={() =>
+              document.getElementById("book-demo")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              })
+            }
+            >
             Book Demo
           </motion.button>
 
@@ -88,7 +92,15 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <button className="w-full px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium">
+            <button 
+              className="w-full px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium"
+              onClick={() =>
+                document.getElementById("book-demo")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                })
+              }
+              >
               Book Demo
             </button>
           </motion.div>

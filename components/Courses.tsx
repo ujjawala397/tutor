@@ -142,6 +142,12 @@ export function Courses() {
                     <motion.button
                       whileHover={{ x: 5 }}
                       className="w-full flex items-center justify-between px-4 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:shadow-lg transition-all group"
+                      onClick={() =>
+                        document.getElementById("book-demo")?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        })
+                      }
                     >
                       Enroll Now
                       <motion.div

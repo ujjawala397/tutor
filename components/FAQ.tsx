@@ -145,14 +145,6 @@ export function FAQ() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-slate-300 mb-4">Still have questions?</p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-          >
-            Contact Us
-          </motion.button>
         </motion.div>
       </div>
     </section>

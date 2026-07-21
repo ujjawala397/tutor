@@ -91,6 +91,12 @@ export function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/5 transition-all"
+              onClick={() =>
+              document.getElementById("courses")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              })
+            }
             >
               Explore Courses
             </motion.button>
