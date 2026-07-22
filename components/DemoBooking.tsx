@@ -1,34 +1,59 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useForm } from 'react-hook-form'
-import { CheckCircle } from 'lucide-react'
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { CheckCircle } from "lucide-react";
 
 type FormData = {
-  studentName: string
-  parentName: string
-  phone: string
-  email: string
-  grade: string
-  subject: string
-  time: string
-  mode: string
-  message: string
-}
+  studentName: string;
+  parentName: string;
+  phone: string;
+  email: string;
+  grade: string;
+  subject: string;
+  time: string;
+  mode: string;
+  message: string;
+};
 
 export function DemoBooking() {
-  const [submitted, setSubmitted] = useState(false)
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
+  const [submitted, setSubmitted] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log('Form submitted:', data)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      reset()
-    }, 3000)
-  }
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/demo-bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to book demo");
+      }
+
+      const result = await response.json();
+      console.log("Booking created:", result);
+
+      setSubmitted(true);
+
+      setTimeout(() => {
+        setSubmitted(false);
+        reset();
+      }, 3000);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -37,37 +62,37 @@ export function DemoBooking() {
       y: 0,
       transition: { duration: 0.8 },
     },
-  }
+  };
 
   return (
     <section id="book-demo" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-              Book Your <span className="gradient-text">FREE Demo Class</span>
-            </h2>
-            <p className="text-lg text-foreground/60">
-              Fill the form below and our team will contact you within 24 hours
-            </p>
-          </motion.div>
 
-          {/* Form Card */}
-          
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="relative rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] overflow-hidden p-8 lg:p-12"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
+            Book Your <span className="gradient-text">FREE Demo Class</span>
+          </h2>
+          <p className="text-lg text-foreground/60">
+            Fill the form below and our team will contact you within 24 hours
+          </p>
+        </motion.div>
+
+        {/* Form Card */}
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] overflow-hidden p-8 lg:p-12"
+        >
           {/* Background gradient on hover */}
           <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/5 to-secondary/5" />
 
@@ -97,7 +122,10 @@ export function DemoBooking() {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="relative z-10 space-y-6">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="relative z-10 space-y-6"
+          >
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -105,13 +133,17 @@ export function DemoBooking() {
                   Student Name *
                 </label>
                 <input
-                  {...register('studentName', { required: 'Student name is required' })}
+                  {...register("studentName", {
+                    required: "Student name is required",
+                  })}
                   type="text"
                   placeholder="Enter student name"
                   className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.studentName && (
-                  <span className="text-red-500 text-sm">{errors.studentName.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.studentName.message}
+                  </span>
                 )}
               </div>
 
@@ -120,13 +152,17 @@ export function DemoBooking() {
                   Parent Name *
                 </label>
                 <input
-                  {...register('parentName', { required: 'Parent name is required' })}
+                  {...register("parentName", {
+                    required: "Parent name is required",
+                  })}
                   type="text"
                   placeholder="Enter parent name"
                   className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.parentName && (
-                  <span className="text-red-500 text-sm">{errors.parentName.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.parentName.message}
+                  </span>
                 )}
               </div>
             </div>
@@ -138,13 +174,15 @@ export function DemoBooking() {
                   Phone Number *
                 </label>
                 <input
-                  {...register('phone', { required: 'Phone is required' })}
+                  {...register("phone", { required: "Phone is required" })}
                   type="tel"
                   placeholder="Enter phone number"
                   className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.phone && (
-                  <span className="text-red-500 text-sm">{errors.phone.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.phone.message}
+                  </span>
                 )}
               </div>
 
@@ -153,13 +191,15 @@ export function DemoBooking() {
                   Email Address *
                 </label>
                 <input
-                  {...register('email', { required: 'Email is required' })}
+                  {...register("email", { required: "Email is required" })}
                   type="email"
                   placeholder="Enter email"
                   className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 />
                 {errors.email && (
-                  <span className="text-red-500 text-sm">{errors.email.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.email.message}
+                  </span>
                 )}
               </div>
             </div>
@@ -167,9 +207,11 @@ export function DemoBooking() {
             {/* Row 3 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Grade *</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">
+                  Grade *
+                </label>
                 <select
-                  {...register('grade', { required: 'Grade is required' })}
+                  {...register("grade", { required: "Grade is required" })}
                   className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 >
                   <option value="">Select Grade</option>
@@ -180,7 +222,9 @@ export function DemoBooking() {
                   ))}
                 </select>
                 {errors.grade && (
-                  <span className="text-red-500 text-sm">{errors.grade.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.grade.message}
+                  </span>
                 )}
               </div>
 
@@ -189,7 +233,7 @@ export function DemoBooking() {
                   Subject Interested *
                 </label>
                 <select
-                  {...register('subject', { required: 'Subject is required' })}
+                  {...register("subject", { required: "Subject is required" })}
                   className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                 >
                   <option value="">Select Subject</option>
@@ -199,36 +243,43 @@ export function DemoBooking() {
                   <option value="AI">Artificial Intelligence</option>
                 </select>
                 {errors.subject && (
-                  <span className="text-red-500 text-sm">{errors.subject.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.subject.message}
+                  </span>
                 )}
               </div>
               <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Mode *</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">
+                  Mode *
+                </label>
                 <div className="flex gap-4">
-                  {['Online', 'Offline', 'Hybrid'].map((m) => (
-                    <label key={m} className="flex items-center gap-2 cursor-pointer">
+                  {["Online", "Offline", "Hybrid"].map((m) => (
+                    <label
+                      key={m}
+                      className="flex items-center gap-2 cursor-pointer"
+                    >
                       <input
                         type="radio"
                         value={m}
-                        {...register('mode', { required: 'Mode is required' })}
+                        {...register("mode", { required: "Mode is required" })}
                         className="w-4 h-4"
                       />
-                      <span className="text-sm font-medium text-foreground">{m}</span>
+                      <span className="text-sm font-medium text-foreground">
+                        {m}
+                      </span>
                     </label>
                   ))}
                 </div>
                 {errors.mode && (
-                  <span className="text-red-500 text-sm">{errors.mode.message}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.mode.message}
+                  </span>
                 )}
               </div>
             </div>
 
             {/* Row 4 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-
-              
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 
             {/* Message */}
             <div>
@@ -236,7 +287,7 @@ export function DemoBooking() {
                 Additional Message
               </label>
               <textarea
-                {...register('message')}
+                {...register("message")}
                 placeholder="Any additional information or questions..."
                 rows={4}
                 className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all resize-none"
@@ -250,18 +301,17 @@ export function DemoBooking() {
               type="submit"
               className="w-full py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold font-display text-lg shadow-lg hover:shadow-2xl transition-all"
               onClick={() => {
-                  document.getElementById("book-demo")?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }}
-              >
+                document.getElementById("book-demo")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+            >
               Book FREE Demo Class
             </motion.button>
           </form>
-          </motion.div>
-        
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
