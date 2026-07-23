@@ -28,7 +28,7 @@ export function DemoBooking() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch("http://localhost:5000/api/demo-bookings", {
+      const response = await fetch("/api/demo-bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
