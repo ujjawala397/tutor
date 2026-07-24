@@ -129,7 +129,7 @@ export function Hero() {
 >
   <Image
     src="/images/banner1.png"
-    alt="Elite Tutoring Banner"
+    alt="CheggTutor Banner"
     fill
     priority
     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"

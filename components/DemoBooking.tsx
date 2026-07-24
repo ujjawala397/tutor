@@ -253,7 +253,7 @@ export function DemoBooking() {
                   Mode *
                 </label>
                 <div className="flex gap-4">
-                  {["Online", "Offline", "Hybrid"].map((m) => (
+                  {["Online"].map((m) => (
                     <label
                       key={m}
                       className="flex items-center gap-2 cursor-pointer"

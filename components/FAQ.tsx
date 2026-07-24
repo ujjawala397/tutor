@@ -16,17 +16,17 @@ export function FAQ() {
     {
       question: 'Can I change tutors?',
       answer:
-        'Yes! If you&apos;re not satisfied with your tutor within the first 2 sessions, we&apos;ll assign you a different tutor at no additional cost.',
+        "Yes! If your'e not satisfied with your tutor within the first 2 sessions, we'll assign you a different tutor at no additional cost.",
     },
     {
       question: 'Do you provide online classes?',
       answer:
-        'Absolutely! We offer online, offline, and hybrid classes. You can choose the mode that works best for you and switch anytime.',
+        'Absolutely! We offer online classes only. You can choose the mode that works best for you and switch anytime.',
     },
     {
       question: 'How are progress reports shared?',
       answer:
-        'We send detailed progress reports every week via email and our mobile app. Reports include performance metrics, strengths, areas for improvement, and personalized recommendations.',
+        'We send detailed progress reports every week via email . Reports include performance metrics, strengths, areas for improvement, and personalized recommendations.',
     },
     {
       question: 'How much does it cost?',
@@ -36,7 +36,7 @@ export function FAQ() {
     {
       question: 'What subjects do you teach?',
       answer:
-        'We teach Mathematics, Physics, Chemistry, Biology, Computer Science, Python, Java, Web Development, AI/ML, and many more. Check our courses section for the complete list.',
+        'We teach Mathematics, Physics, Chemistry, Biology, Computer Science, Python, Java, Web Development, AI/ML, and many more. Contact us for more information.',
     },
   ]
 

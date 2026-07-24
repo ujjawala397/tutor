@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
@@ -11,19 +10,57 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Elite Tutoring Academy | Expert Education for Grades 3-12',
-  description: 'Premium tutoring platform offering expert instruction in Mathematics, Science, Programming, and AI. Book your free demo class today.',
-  generator: 'v0.app',
+  title: 'CheggTutor | Best Online Tutoring for Grades 3-10',
+  description: 'CheggTutor helps students in Grades 3-10 excel in Maths, Science, Coding, and AI with expert tutors, personalized learning plans, and free demo classes.',
+  keywords: [
+    'tutoring for grade 3 to 10',
+    'online maths tutor',
+    'science tutoring',
+    'coding classes for students',
+    'AI tutoring',
+    'CBSE tutoring',
+    'best online tutor for students',
+    'free demo class',
+  ],
+  authors: [{ name: 'CheggTutor' }],
+  creator: 'CheggTutor',
+  publisher: 'CheggTutor',
+  category: 'education',
+  metadataBase: new URL('https://cheggtutor.example.com'),
+  openGraph: {
+    title: 'CheggTutor | Tutoring for Grades 3-10',
+    description:
+      'Expert one-on-one tutoring for students in Grades 3-10. Build confidence in Maths, Science, Coding, and AI with a structured learning plan.',
+    siteName: 'CheggTutor',
+    type: 'website',
+    locale: 'en_IN',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'CheggTutor tutoring banner',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CheggTutor | Tutoring for Grades 3-10',
+    description:
+      'Flexible and affordable online tutoring for Grades 3-10 with live expert support.',
+    images: ['/og-image.svg'],
+  },
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-      },
-      {
-        url: '/icon.svg',
+        url: '/favicon.svg',
         type: 'image/svg+xml',
       },
     ],
+    shortcut: '/favicon.svg',
     apple: '/apple-icon.png',
   },
 }
@@ -31,6 +68,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: '#f8fafc',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -42,7 +81,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className="bg-background text-foreground antialiased">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

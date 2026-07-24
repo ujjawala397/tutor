@@ -22,9 +22,9 @@ export default function Home() {
       <FloatingElements />
       <Navbar />
       <Hero />
-      <WhyChooseUs />
-      <Courses />
       <LearningJourney />
+      <Courses />
+      <WhyChooseUs />
       <Tutors />
       <TutorQuotes />
       <StudentSuccess />

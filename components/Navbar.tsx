@@ -27,13 +27,13 @@ export function Navbar() {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center space-x-2 cursor-pointer min-w-0"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">E</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shrink-0">
+              <span className="text-white font-bold text-lg">C</span>
             </div>
-            <span className="font-display font-bold text-xl text-slate-100 hidden sm:inline">
-              Elite Tutoring
+            <span className="font-display font-bold text-base sm:text-xl text-slate-100 truncate">
+              CheggTutor
             </span>
           </motion.div>
 

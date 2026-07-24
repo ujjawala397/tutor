@@ -14,7 +14,7 @@ export function LearningJourney() {
     },
     {
       step: 2,
-      title: 'Assessment Test',
+      title: 'Assessment',
       desc: 'Evaluate current knowledge level',
       icon: Target,
       color: 'from-purple-400 to-purple-600',
@@ -172,10 +172,10 @@ export function LearningJourney() {
                   </div>
 
                   <div className="flex-1 pt-2 pb-8">
-                    <h3 className="font-semibold text-lg text-slate-900 font-display">
+                    <h3 className="font-semibold text-lg text-slate-100 font-display">
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 text-sm">{item.desc}</p>
+                    <p className="text-slate-300 text-sm">{item.desc}</p>
                   </div>
                 </motion.div>
               )
