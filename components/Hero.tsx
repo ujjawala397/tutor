@@ -38,7 +38,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex items-center"
+      className="min-h-screen pt-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex items-center"
     >
       {/* Animated gradient background */}
       <div className="absolute inset-0 -z-10">

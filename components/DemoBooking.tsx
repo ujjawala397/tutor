@@ -65,7 +65,7 @@ export function DemoBooking() {
   };
 
   return (
-    <section id="book-demo" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="book-demo" className="py-14 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
 
@@ -74,7 +74,7 @@ export function DemoBooking() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Book Your <span className="gradient-text">FREE Demo Class</span>

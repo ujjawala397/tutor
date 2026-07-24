@@ -64,7 +64,7 @@ export function Tutors() {
   const duplicatedTutors = [...tutors, ...tutors]
 
   return (
-    <section id="tutors" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="tutors" className="py-14 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -72,7 +72,7 @@ export function Tutors() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Meet Our <span className="gradient-text">Expert Tutors</span>
