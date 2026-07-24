@@ -73,9 +73,9 @@ export function Hero() {
           </motion.div>
 
           {/* Buttons */}
-          <motion.div
+         <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 pt-4"
+            className="flex flex-col sm:flex-row gap-3 mb-0 pb-0"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -92,11 +92,11 @@ export function Hero() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/5 transition-all"
               onClick={() =>
-              document.getElementById("courses")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
+                document.getElementById("courses")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                })
+              }
             >
               Explore Courses
             </motion.button>
@@ -105,17 +105,19 @@ export function Hero() {
           {/* Trust Badges */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 gap-4 pt-8"
+            className="grid grid-cols-2 gap-3"
           >
             {trustBadges.map((badge, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
-                className="flex items-center gap-3 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-white/20"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-white/20"
               >
                 <span className="text-2xl">{badge.value}</span>
                 <div>
-                  <p className="font-semibold text-foreground text-sm">{badge.label}</p>
+                  <p className="font-semibold text-foreground text-sm">
+                    {badge.label}
+                  </p>
                 </div>
               </motion.div>
             ))}
