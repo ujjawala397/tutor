@@ -135,7 +135,7 @@ export function Hero() {
     fill
     priority
     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
-    className="object-contain object-[center_-100px]"
+    className="object-contain object-[center_-20px]"
   />
 </motion.div>
         
