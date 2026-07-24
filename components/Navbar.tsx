@@ -8,12 +8,20 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Courses', href: '#courses' },
-    { name: 'Tutors', href: '#tutors' },
-    { name: 'Reviews', href: '#reviews' },
-    { name: 'FAQ', href: '#faq' },
+    { name: 'Home', id: 'home' },
+    { name: 'Courses', id: 'courses' },
+    { name: 'Tutors', id: 'tutors' },
+    { name: 'Reviews', id: 'reviews' },
+    { name: 'FAQ', id: 'faq' },
   ]
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+    setIsOpen(false)
+  }
 
   return (
     <motion.nav
@@ -23,11 +31,13 @@ export function Navbar() {
       className="fixed top-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-lg text-slate-100"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="relative flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.div
+          <motion.button
+            type="button"
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer min-w-0"
+            onClick={() => scrollToSection('home')}
+            className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center space-x-2 cursor-pointer min-w-0"
           >
             <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shrink-0">
               <span className="text-white font-bold text-lg">C</span>
@@ -35,19 +45,20 @@ export function Navbar() {
             <span className="font-display font-bold text-base sm:text-xl text-slate-100 truncate">
               CheggTutor
             </span>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <motion.a
+              <motion.button
                 key={link.name}
-                href={link.href}
+                type="button"
                 whileHover={{ color: '#4f46e5' }}
+                onClick={() => scrollToSection(link.id)}
                 className="text-slate-300 hover:text-cyan-300 transition-colors text-sm font-medium"
               >
                 {link.name}
-              </motion.a>
+              </motion.button>
             ))}
           </div>
 
@@ -84,13 +95,14 @@ export function Navbar() {
             className="md:hidden pb-4 space-y-3"
           >
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                className="block px-4 py-2 text-slate-300 hover:text-cyan-300 hover:bg-white/10 rounded-lg transition-all"
+                type="button"
+                onClick={() => scrollToSection(link.id)}
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:text-cyan-300 hover:bg-white/10 rounded-lg transition-all"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
             <button 
               className="w-full px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium"

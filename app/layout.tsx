@@ -11,7 +11,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'CheggTutor | Best Online Tutoring for Grades 3-10',
-  description: 'CheggTutor helps students in Grades 3-10 excel in Maths, Science, Coding, and AI with expert tutors, personalized learning plans, and free demo classes.',
+  description:
+    'CheggTutor helps students in Grades 3-10 excel in Maths, Science, Coding, and AI with expert tutors, personalized learning plans, and free demo classes.',
   keywords: [
     'tutoring for grade 3 to 10',
     'online maths tutor',
@@ -22,16 +23,19 @@ export const metadata: Metadata = {
     'best online tutor for students',
     'free demo class',
   ],
+  applicationName: 'CheggTutor',
   authors: [{ name: 'CheggTutor' }],
   creator: 'CheggTutor',
   publisher: 'CheggTutor',
   category: 'education',
-  metadataBase: new URL('https://cheggtutor.example.com'),
+  metadataBase: new URL('https://cheggtutor.com'),
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'CheggTutor | Tutoring for Grades 3-10',
     description:
       'Expert one-on-one tutoring for students in Grades 3-10. Build confidence in Maths, Science, Coding, and AI with a structured learning plan.',
     siteName: 'CheggTutor',
+    url: 'https://cheggtutor.com/',
     type: 'website',
     locale: 'en_IN',
     images: [
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
     images: ['/og-image.svg'],
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://cheggtutor.com/',
   },
   icons: {
     icon: [

@@ -19,10 +19,10 @@ export function Footer() {
   };
 
   const socialLinks = [
-    { icon: Share2, label: "Facebook", href: "#" },
-    { icon: Heart, label: "Twitter", href: "#" },
-    { icon: Link, label: "LinkedIn", href: "#" },
-    { icon: Globe, label: "Website", href: "#" },
+    { icon: Share2, label: "Facebook" },
+    { icon: Heart, label: "Twitter" },
+    { icon: Link, label: "LinkedIn" },
+    { icon: Globe, label: "Website" },
   ];
 
   const containerVariants = {
@@ -88,14 +88,14 @@ export function Footer() {
                 {socialLinks.map((link, index) => {
                   const Icon = link.icon;
                   return (
-                    <motion.a
+                    <motion.div
                       key={index}
-                      href={link.href}
                       whileHover={{ scale: 1.2, rotate: 10 }}
-                      className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                      className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary transition-all"
+                      aria-label={link.label}
                     >
                       <Icon size={18} />
-                    </motion.a>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -109,13 +109,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {links.map((link, index) => (
                   <li key={index}>
-                    <motion.a
+                    <motion.span
                       whileHover={{ x: 5 }}
-                      href="#"
-                      className="text-slate-600 hover:text-primary transition-colors text-sm"
+                      className="text-slate-600 text-sm"
                     >
                       {link}
-                    </motion.a>
+                    </motion.span>
                   </li>
                 ))}
               </ul>
@@ -138,12 +137,8 @@ export function Footer() {
             &copy; {currentYear} CheggTutor. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-primary transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
-              Terms of Service
-            </a>
+            <span className="text-slate-500">Privacy Policy</span>
+            <span className="text-slate-500">Terms of Service</span>
           </div>
         </motion.div>
       </div>
