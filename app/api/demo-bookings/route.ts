@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
-  const backendUrl = process.env.DEMO_API_URL
+  const backendUrl = process.env.NEXT_PUBLIC_DEMO_API_URL
 
   if (!backendUrl) {
     return NextResponse.json(
-      { message: 'DEMO_API_URL is not configured.' },
+      { message: 'NEXT_PUBLIC_DEMO_API_URL is not configured.' },
       { status: 500 },
     )
   }
