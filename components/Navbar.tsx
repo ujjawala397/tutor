@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 export function Navbar() {
@@ -39,8 +40,14 @@ export function Navbar() {
             onClick={() => scrollToSection('home')}
             className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center space-x-2 cursor-pointer min-w-0"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shrink-0">
-              <span className="text-white font-bold text-lg">C</span>
+            <div className="w-14 h-14 shrink-0 overflow-hidden pt-1">
+              <Image
+                src="/cheggtutor_logo_.png"
+                alt="CheggTutor logo"
+                width={58}
+                height={58}
+                className="h-full w-full object-contain"
+              />
             </div>
             <span className="font-display font-bold text-base sm:text-xl text-slate-100 truncate">
               CheggTutor
@@ -53,9 +60,9 @@ export function Navbar() {
               <motion.button
                 key={link.name}
                 type="button"
-                whileHover={{ color: '#4f46e5' }}
+                whileHover={{ color: '#ffffff', scale: 1.2 }}
                 onClick={() => scrollToSection(link.id)}
-                className="text-slate-300 hover:text-cyan-300 transition-colors text-sm font-medium"
+                className="text-slate-300 hover:text-white transition-colors text-sm font-medium"
               >
                 {link.name}
               </motion.button>
