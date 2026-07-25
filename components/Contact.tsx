@@ -15,8 +15,8 @@ export function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "info@tutoring.com",
-      href: "mailto:info@tutoring.com",
+      value: "admin@cheggtutor.com",
+      href: "mailto:admin@cheggtutor.com",
       color: "from-purple-400 to-purple-600",
     },
     {
@@ -76,7 +76,7 @@ export function Contact() {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Have questions? We&apos;d love to hear from you. Contact us today!
+            Have questions? We'd love to hear from you. Contact us today!
           </p>
         </motion.div>
 

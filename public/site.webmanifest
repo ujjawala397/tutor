@@ -1,7 +1,7 @@
 {
   "name": "CheggTutor",
   "short_name": "CheggTutor",
-  "description": "CheggTutor provides expert online tutoring for Grades 3-10 with maths, science, coding, and AI coaching.",
+  "description": "CheggTutor provides expert online tutoring for Grades 3-12 with maths, science, coding, and AI coaching.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f8fafc",

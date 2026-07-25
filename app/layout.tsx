@@ -10,11 +10,11 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'CheggTutor | Best Online Tutoring for Grades 3-10',
+  title: 'CheggTutor | Best Online Tutoring for Grades 3-12',
   description:
-    'CheggTutor helps students in Grades 3-10 excel in Maths, Science, Coding, and AI with expert tutors, personalized learning plans, and free demo classes.',
+    'CheggTutor helps students in Grades 3-12 excel in Maths, Science, Coding, and AI with expert tutors, personalized learning plans, and free demo classes.',
   keywords: [
-    'tutoring for grade 3 to 10',
+    'tutoring for grade 3 to 12',
     'online maths tutor',
     'science tutoring',
     'coding classes for students',
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cheggtutor.com'),
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'CheggTutor | Tutoring for Grades 3-10',
+    title: 'CheggTutor | Tutoring for Grades 3-12',
     description:
-      'Expert one-on-one tutoring for students in Grades 3-10. Build confidence in Maths, Science, Coding, and AI with a structured learning plan.',
+      'Expert one-on-one tutoring for students in Grades 3-12. Build confidence in Maths, Science, Coding, and AI with a structured learning plan.',
     siteName: 'CheggTutor',
     url: 'https://cheggtutor.com/',
     type: 'website',
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CheggTutor | Tutoring for Grades 3-10',
+    title: 'CheggTutor | Tutoring for Grades 3-12',
     description:
-      'Flexible and affordable online tutoring for Grades 3-10 with live expert support.',
+      'Flexible and affordable online tutoring for Grades 3-12 with live expert support.',
     images: ['/og-image.svg'],
   },
   alternates: {

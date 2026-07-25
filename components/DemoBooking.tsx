@@ -19,6 +19,7 @@ type FormData = {
 
 export function DemoBooking() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,33 +28,37 @@ export function DemoBooking() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    try {
-      const response = await fetch("/api/demo-bookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+  setLoading(true);
 
-      if (!response.ok) {
-        throw new Error("Failed to book demo");
-      }
+  try {
+    const response = await fetch("/api/demo-bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-      const result = await response.json();
-      console.log("Booking created:", result);
-
-      setSubmitted(true);
-
-      setTimeout(() => {
-        setSubmitted(false);
-        reset();
-      }, 3000);
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again.");
+    if (!response.ok) {
+      throw new Error("Failed to book demo");
     }
-  };
+
+    const result = await response.json();
+    console.log("Booking created:", result);
+
+    setSubmitted(true);
+
+    setTimeout(() => {
+      setSubmitted(false);
+      reset();
+    }, 3000);
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -168,40 +173,29 @@ export function DemoBooking() {
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  {...register("phone", { required: "Phone is required" })}
-                  type="tel"
-                  placeholder="Enter phone number"
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
-                />
-                {errors.phone && (
-                  <span className="text-red-500 text-sm">
-                    {errors.phone.message}
-                  </span>
-                )}
-              </div>
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                Phone Number *
+              </label>
 
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">
-                  Email Address *
-                </label>
-                <input
-                  {...register("email", { required: "Email is required" })}
-                  type="email"
-                  placeholder="Enter email"
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
-                />
-                {errors.email && (
-                  <span className="text-red-500 text-sm">
-                    {errors.email.message}
-                  </span>
-                )}
-              </div>
+              <input
+                {...register("phone", {
+                  required: "Phone number is required",
+                  pattern: {
+                    value: /^\+[1-9]\d{7,14}$/,
+                    message: "Enter a valid phone number with country code (e.g. +919876543210)",
+                  },
+                })}
+                type="tel"
+                placeholder="+919876543210"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
+              />
+
+              {errors.phone && (
+                <span className="text-red-500 text-sm">
+                  {errors.phone.message}
+                </span>
+              )}
             </div>
 
             {/* Row 3 */}
@@ -296,10 +290,15 @@ export function DemoBooking() {
 
             {/* Submit Button */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={!loading ? { scale: 1.05 } : {}}
+              whileTap={!loading ? { scale: 0.95 } : {}}
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold font-display text-lg shadow-lg hover:shadow-2xl transition-all"
+              disabled={loading}
+              className={`w-full py-4 rounded-lg font-semibold font-display text-lg shadow-lg transition-all ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-primary to-secondary text-white hover:shadow-2xl"
+              }`}
               onClick={() => {
                 document.getElementById("book-demo")?.scrollIntoView({
                   behavior: "smooth",
@@ -307,7 +306,33 @@ export function DemoBooking() {
                 });
               }}
             >
-              Book FREE Demo Class
+              {loading ? (
+                <div className="flex items-center justify-center gap-3">
+                  <svg
+                    className="h-5 w-5 animate-spin"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    />
+                  </svg>
+                  Booking Demo...
+                </div>
+              ) : (
+                "Book FREE Demo Class"
+              )}
             </motion.button>
           </form>
         </motion.div>

@@ -24,18 +24,18 @@ const structuredData = {
       name: 'CheggTutor',
       url: 'https://cheggtutor.com/',
       description:
-        'CheggTutor provides online tutoring for students in Grades 3-10 with expert instruction in Maths, Science, Coding, and AI.',
+        'CheggTutor provides online tutoring for students in Grades 3-12 with expert instruction in Maths, Science, Coding, and AI.',
       areaServed: 'IN',
       sameAs: ['https://cheggtutor.com/'],
       serviceType: ['Online Tutoring', 'Maths Tutoring', 'Science Tutoring', 'Coding Classes'],
-      audienceType: 'Students in Grades 3-10',
+      audienceType: 'Students in Grades 3-12',
     },
     {
       '@type': 'WebSite',
       name: 'CheggTutor',
       url: 'https://cheggtutor.com/',
       description:
-        'Personalized online tutoring platform helping students build confidence and improve academic performance in Grades 3-10.',
+        'Personalized online tutoring platform helping students build confidence and improve academic performance in Grades 3-12.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://cheggtutor.com/#courses',
