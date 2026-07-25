@@ -20,6 +20,8 @@ type FormData = {
 export function DemoBooking() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [countryCode, setCountryCode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const {
     register,
     handleSubmit,
@@ -31,12 +33,13 @@ export function DemoBooking() {
   setLoading(true);
 
   try {
+    const normalizedPhone = `${countryCode}${phoneNumber}`.trim();
     const response = await fetch("/api/demo-bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, phone: normalizedPhone }),
     });
 
     if (!response.ok) {
@@ -50,6 +53,8 @@ export function DemoBooking() {
 
     setTimeout(() => {
       setSubmitted(false);
+      setCountryCode("");
+      setPhoneNumber("");
       reset();
     }, 3000);
   } catch (error) {
@@ -173,32 +178,59 @@ export function DemoBooking() {
             </div>
 
             {/* Row 2 */}
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">
-                Phone Number *
-              </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">
+                  Phone Number *
+                </label>
 
-              <input
-                {...register("phone", {
-                  required: "Phone number is required",
-                  pattern: {
-                    value: /^\+[1-9]\d{7,14}$/,
-                    message: "Enter a valid phone number with country code (e.g. +919876543210)",
-                  },
-                })}
-                type="tel"
-                placeholder="+919876543210"
-                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
-              />
+                <div className="grid grid-cols-[110px_1fr] gap-3">
+                  <div>
+                    <input
+                      type="text"
+                      value={countryCode}
+                      onChange={(e) => setCountryCode(e.target.value)}
+                      placeholder="Country code"
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
+                    />
+                  </div>
 
-              {errors.phone && (
-                <span className="text-red-500 text-sm">
-                  {errors.phone.message}
-                </span>
-              )}
+                  <div>
+                    <input
+                      type="tel"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      placeholder="Enter phone number"
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">
+                  Email Address *
+                </label>
+                <input
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Enter a valid email address",
+                    },
+                  })}
+                  type="email"
+                  placeholder="Enter email address"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
+                />
+                {errors.email && (
+                  <span className="text-red-500 text-sm">
+                    {errors.email.message}
+                  </span>
+                )}
+              </div>
             </div>
 
-            {/* Row 3 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <label className="block text-sm font-semibold text-foreground mb-2">
@@ -235,6 +267,7 @@ export function DemoBooking() {
                   <option value="Science">Science</option>
                   <option value="Programming">Programming</option>
                   <option value="AI">Artificial Intelligence</option>
+                  <option value="Other">Other</option>
                 </select>
                 {errors.subject && (
                   <span className="text-red-500 text-sm">
@@ -242,6 +275,7 @@ export function DemoBooking() {
                   </span>
                 )}
               </div>
+
               <div>
                 <label className="block text-sm font-semibold text-foreground mb-2">
                   Mode *
