@@ -191,6 +191,7 @@ export function DemoBooking() {
                       value={countryCode}
                       onChange={(e) => setCountryCode(e.target.value)}
                       placeholder="Country code"
+                      required
                       className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                     />
                   </div>
