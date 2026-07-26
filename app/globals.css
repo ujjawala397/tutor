@@ -1,6 +1,6 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -132,30 +132,31 @@
   .glass-effect {
     @apply backdrop-blur-md bg-white/20 border border-white/30;
   }
-  
+
   .glass-effect-dark {
     @apply backdrop-blur-md bg-slate-900/20 border border-white/10;
   }
-  
+
   .gradient-text {
     @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
   }
-  
+
   .floating-animation {
     animation: floating 6s ease-in-out infinite;
   }
-  
+
   .gradient-bg {
     @apply bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10;
   }
-  
+
   .blur-card {
     @apply rounded-2xl border border-white/20 bg-white/10 shadow-xl backdrop-blur-xl;
   }
 }
 
 @keyframes floating {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -164,7 +165,8 @@
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
