@@ -1,9 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { TrashIcon } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
-
-const API_URL = "http://localhost:5000";
 
 interface DemoBooking {
   _id: string;
@@ -55,7 +54,7 @@ export default function LeadsPage() {
 
   async function checkSession() {
     try {
-      const response = await fetch(`${API_URL}/api/admin/session`, {
+      const response = await fetch("/api/admin/session", {
         credentials: "include",
       });
 
@@ -75,7 +74,7 @@ export default function LeadsPage() {
     setLoggingIn(true);
 
     try {
-      const response = await fetch(`${API_URL}/api/admin/login`, {
+      const response = await fetch("/api/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -109,7 +108,7 @@ export default function LeadsPage() {
     setBookingsLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/api/admin/demo-bookings`, {
+      const response = await fetch("/api/admin/demo-bookings", {
         credentials: "include",
       });
 
@@ -134,7 +133,7 @@ export default function LeadsPage() {
 
   async function handleLogout() {
     try {
-      await fetch(`${API_URL}/api/admin/logout`, {
+      await fetch("/api/admin/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -156,13 +155,10 @@ export default function LeadsPage() {
     }
 
     try {
-      const response = await fetch(
-        `${API_URL}/api/admin/demo-bookings/${booking._id}`,
-        {
-          method: "DELETE",
-          credentials: "include",
-        },
-      );
+      const response = await fetch(`/api/admin/demo-bookings/${booking._id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
 
       if (response.status === 401) {
         setAuthenticated(false);
@@ -245,12 +241,18 @@ export default function LeadsPage() {
         <header className="bg-slate-950 text-white shadow-lg">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 font-bold text-white shadow-lg shadow-indigo-500/20">
-                E
+              <div className="h-12 w-12 shrink-0 overflow-hidden">
+                <Image
+                  src="/cheggtutor_logo_.png"
+                  alt="CheggTutor logo"
+                  width={48}
+                  height={48}
+                  className="h-full w-full object-contain"
+                />
               </div>
 
               <div>
-                <p className="text-base font-bold">Elite Tutoring</p>
+                <p className="text-base font-bold">CheggTutor</p>
 
                 <p className="text-xs text-slate-400">Admin Portal</p>
               </div>

@@ -29,6 +29,20 @@ export function DemoBooking() {
     reset,
   } = useForm<FormData>();
 
+  const handleCountryCodeChange = (value: string) => {
+    const cleaned = value.replace(/[^\d+]/g, "");
+
+    if (!cleaned) {
+      setCountryCode("");
+      return;
+    }
+
+    const digitsOnly = cleaned.replace(/\+/g, "");
+    const normalized = `+${digitsOnly}`.slice(0, 5);
+
+    setCountryCode(normalized);
+  };
+
   const onSubmit = async (data: FormData) => {
   setLoading(true);
 
@@ -187,10 +201,14 @@ export function DemoBooking() {
                 <div className="grid grid-cols-[110px_1fr] gap-3">
                   <div>
                     <input
-                      type="text"
+                      type="tel"
                       value={countryCode}
-                      onChange={(e) => setCountryCode(e.target.value)}
-                      placeholder="Country code"
+                      onChange={(e) => handleCountryCodeChange(e.target.value)}
+                      inputMode="numeric"
+                      pattern="^\+\d{1,4}$"
+                      title="Enter country code like +91"
+                      maxLength={5}
+                      placeholder="Code"
                       required
                       className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                     />
