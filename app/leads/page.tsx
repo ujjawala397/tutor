@@ -62,6 +62,10 @@ export default function LeadsPage() {
   const [search, setSearch] = useState("");
   const [modeFilter, setModeFilter] = useState("All");
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 25;
+
   // Details drawer
   const [selectedBooking, setSelectedBooking] = useState<DemoBooking | null>(
     null,
@@ -255,6 +259,17 @@ export default function LeadsPage() {
     });
   }, [enrichedBookings, modeFilter, searchValue]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchValue, modeFilter]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredBookings.length / pageSize));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const pageStartIndex = (safeCurrentPage - 1) * pageSize;
+  const paginatedBookings = useMemo(() => {
+    return filteredBookings.slice(pageStartIndex, pageStartIndex + pageSize);
+  }, [filteredBookings, pageStartIndex, pageSize]);
+
   const { onlineCount, offlineCount, hybridCount } = useMemo(() => {
     return bookings.reduce(
       (counts, booking) => {
@@ -418,6 +433,16 @@ export default function LeadsPage() {
                     Showing {filteredBookings.length} of {bookings.length} lead
                     {bookings.length !== 1 ? "s" : ""}
                   </p>
+
+                  {filteredBookings.length > 0 && (
+                    <p className="mt-1 text-xs text-slate-400">
+                      Rows {pageStartIndex + 1}-
+                      {Math.min(
+                        pageStartIndex + paginatedBookings.length,
+                        filteredBookings.length,
+                      )} of {filteredBookings.length}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-3 sm:flex-row">
@@ -505,7 +530,7 @@ export default function LeadsPage() {
                   </thead>
 
                   <tbody className="divide-y divide-slate-100">
-                    {filteredBookings.map((booking) => (
+                    {paginatedBookings.map((booking) => (
                       <tr
                         key={booking._id}
                         className="group transition hover:bg-indigo-50/30"
@@ -594,6 +619,38 @@ export default function LeadsPage() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            )}
+
+            {!bookingsLoading && filteredBookings.length > pageSize && (
+              <div className="flex items-center justify-between border-t border-slate-200 px-5 py-4 sm:px-6">
+                <p className="text-xs text-slate-500">
+                  Page {safeCurrentPage} of {totalPages}
+                </p>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setCurrentPage((page) => Math.max(1, page - 1))
+                    }
+                    disabled={safeCurrentPage === 1}
+                    className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-indigo-300 hover:text-indigo-600 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Previous
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setCurrentPage((page) => Math.min(totalPages, page + 1))
+                    }
+                    disabled={safeCurrentPage === totalPages}
+                    className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-indigo-300 hover:text-indigo-600 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             )}
           </section>
