@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import { TrashIcon } from "lucide-react";
-import { FormEvent, useEffect, useState } from "react";
+import {
+  FormEvent,
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 interface DemoBooking {
   _id: string;
@@ -17,6 +24,24 @@ interface DemoBooking {
   createdAt: string;
   updatedAt: string;
 }
+
+type EnrichedBooking = DemoBooking & {
+  initials: string;
+  receivedDateLabel: string;
+  receivedTimeLabel: string;
+  searchText: string;
+};
+
+const receivedDateFormatter = new Intl.DateTimeFormat("en-IN", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+});
+
+const receivedTimeFormatter = new Intl.DateTimeFormat("en-IN", {
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
 export default function LeadsPage() {
   // Authentication
@@ -42,30 +67,61 @@ export default function LeadsPage() {
     null,
   );
 
-  useEffect(() => {
-    checkSession();
-  }, []);
+  const fetchBookings = useCallback(
+    async ({ showLoader = true }: { showLoader?: boolean } = {}) => {
+      if (showLoader) {
+        setBookingsLoading(true);
+      }
+
+      try {
+        const response = await fetch("/api/admin/demo-bookings", {
+          credentials: "include",
+        });
+
+        if (response.status === 401) {
+          setAuthenticated(false);
+          setBookings([]);
+          return false;
+        }
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch bookings");
+        }
+
+        const data = await response.json();
+
+        setBookings(data.data ?? []);
+        setAuthenticated(true);
+        return true;
+      } catch (error) {
+        console.error("Unable to fetch demo bookings:", error);
+        return false;
+      } finally {
+        if (showLoader) {
+          setBookingsLoading(false);
+        }
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
-    if (authenticated) {
-      fetchBookings();
-    }
-  }, [authenticated]);
+    let active = true;
 
-  async function checkSession() {
-    try {
-      const response = await fetch("/api/admin/session", {
-        credentials: "include",
-      });
+    async function initializeDashboard() {
+      await fetchBookings({ showLoader: false });
 
-      setAuthenticated(response.ok);
-    } catch (error) {
-      console.error("Session check failed:", error);
-      setAuthenticated(false);
-    } finally {
-      setLoading(false);
+      if (active) {
+        setLoading(false);
+      }
     }
-  }
+
+    initializeDashboard();
+
+    return () => {
+      active = false;
+    };
+  }, [fetchBookings]);
 
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -93,7 +149,12 @@ export default function LeadsPage() {
         return;
       }
 
-      setAuthenticated(true);
+      const loaded = await fetchBookings({ showLoader: false });
+
+      if (!loaded) {
+        setError("Logged in, but unable to load leads right now.");
+      }
+
       setUsername("");
       setPassword("");
     } catch (error) {
@@ -101,33 +162,6 @@ export default function LeadsPage() {
       setError("Unable to connect to the server");
     } finally {
       setLoggingIn(false);
-    }
-  }
-
-  async function fetchBookings() {
-    setBookingsLoading(true);
-
-    try {
-      const response = await fetch("/api/admin/demo-bookings", {
-        credentials: "include",
-      });
-
-      if (response.status === 401) {
-        setAuthenticated(false);
-        return;
-      }
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch bookings");
-      }
-
-      const data = await response.json();
-
-      setBookings(data.data);
-    } catch (error) {
-      console.error("Unable to fetch demo bookings:", error);
-    } finally {
-      setBookingsLoading(false);
     }
   }
 
@@ -184,33 +218,59 @@ export default function LeadsPage() {
     }
   }
 
-  const filteredBookings = bookings.filter((booking) => {
-    const searchValue = search.trim().toLowerCase();
+  const deferredSearch = useDeferredValue(search);
+  const searchValue = deferredSearch.trim().toLowerCase();
 
-    const matchesSearch =
-      booking.studentName.toLowerCase().includes(searchValue) ||
-      booking.parentName.toLowerCase().includes(searchValue) ||
-      booking.email.toLowerCase().includes(searchValue) ||
-      booking.phone.toLowerCase().includes(searchValue) ||
-      booking.subject.toLowerCase().includes(searchValue) ||
-      booking.grade.toLowerCase().includes(searchValue);
+  const enrichedBookings = useMemo<EnrichedBooking[]>(() => {
+    return bookings.map((booking) => {
+      const createdAtDate = new Date(booking.createdAt);
 
-    const matchesMode = modeFilter === "All" || booking.mode === modeFilter;
+      return {
+        ...booking,
+        initials: getInitials(booking.studentName),
+        receivedDateLabel: receivedDateFormatter.format(createdAtDate),
+        receivedTimeLabel: receivedTimeFormatter.format(createdAtDate),
+        searchText: [
+          booking.studentName,
+          booking.parentName,
+          booking.email,
+          booking.phone,
+          booking.subject,
+          booking.grade,
+        ]
+          .join(" ")
+          .toLowerCase(),
+      };
+    });
+  }, [bookings]);
 
-    return matchesSearch && matchesMode;
-  });
+  const filteredBookings = useMemo(() => {
+    return enrichedBookings.filter((booking) => {
+      const matchesSearch =
+        searchValue.length === 0 || booking.searchText.includes(searchValue);
 
-  const onlineCount = bookings.filter(
-    (booking) => booking.mode === "Online",
-  ).length;
+      const matchesMode = modeFilter === "All" || booking.mode === modeFilter;
 
-  const offlineCount = bookings.filter(
-    (booking) => booking.mode === "Offline",
-  ).length;
+      return matchesSearch && matchesMode;
+    });
+  }, [enrichedBookings, modeFilter, searchValue]);
 
-  const hybridCount = bookings.filter(
-    (booking) => booking.mode === "Hybrid",
-  ).length;
+  const { onlineCount, offlineCount, hybridCount } = useMemo(() => {
+    return bookings.reduce(
+      (counts, booking) => {
+        if (booking.mode === "Online") {
+          counts.onlineCount += 1;
+        } else if (booking.mode === "Offline") {
+          counts.offlineCount += 1;
+        } else {
+          counts.hybridCount += 1;
+        }
+
+        return counts;
+      },
+      { onlineCount: 0, offlineCount: 0, hybridCount: 0 },
+    );
+  }, [bookings]);
 
   // --------------------------------------------------
   // SESSION LOADING
@@ -223,7 +283,7 @@ export default function LeadsPage() {
           <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-white/10 border-t-indigo-500" />
 
           <p className="mt-4 text-sm text-slate-400">
-            Checking admin session...
+            Loading admin dashboard...
           </p>
         </div>
       </main>
@@ -454,7 +514,7 @@ export default function LeadsPage() {
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
                             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 text-xs font-bold uppercase text-white shadow-sm">
-                              {getInitials(booking.studentName)}
+                              {booking.initials}
                             </div>
 
                             <div>
@@ -494,24 +554,11 @@ export default function LeadsPage() {
                         {/* DATE */}
                         <td className="px-6 py-4">
                           <p className="text-sm text-slate-600">
-                            {new Date(booking.createdAt).toLocaleDateString(
-                              "en-IN",
-                              {
-                                day: "2-digit",
-                                month: "short",
-                                year: "numeric",
-                              },
-                            )}
+                            {booking.receivedDateLabel}
                           </p>
 
                           <p className="mt-0.5 text-xs text-slate-400">
-                            {new Date(booking.createdAt).toLocaleTimeString(
-                              "en-IN",
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              },
-                            )}
+                            {booking.receivedTimeLabel}
                           </p>
                         </td>
 
@@ -579,12 +626,18 @@ export default function LeadsPage() {
         {/* Logo */}
         <div className="mb-7 flex justify-center">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 text-lg font-bold text-white shadow-lg shadow-indigo-500/20">
-              E
+            <div className="h-12 w-12 shrink-0 overflow-hidden">
+              <Image
+                src="/cheggtutor_logo_.png"
+                alt="CheggTutor logo"
+                width={48}
+                height={48}
+                className="h-full w-full object-contain"
+              />
             </div>
 
             <div>
-              <p className="font-bold text-white">Elite Tutoring</p>
+              <p className="font-bold text-white">CheggTutor</p>
 
               <p className="text-xs text-slate-400">Administration</p>
             </div>
@@ -673,7 +726,7 @@ export default function LeadsPage() {
         </div>
 
         <p className="mt-6 text-center text-xs text-slate-500">
-          Restricted access · Elite Tutoring Administration
+          Restricted access · CheggTutor Administration
         </p>
       </div>
     </main>

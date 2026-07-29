@@ -16,6 +16,7 @@ async function proxyRequest(request: NextRequest, context: RouteContext) {
   }
 
   try {
+    const startedAt = Date.now();
     const { path } = await context.params;
     const backendOrigin = new URL(baseBookingUrl).origin;
     const target = `${backendOrigin}/api/admin/${path.join("/")}${request.nextUrl.search}`;
@@ -33,11 +34,11 @@ async function proxyRequest(request: NextRequest, context: RouteContext) {
       cache: "no-store",
     });
 
-    const body = await response.text();
-    const proxied = new NextResponse(body, {
+    const proxied = new NextResponse(response.body, {
       status: response.status,
       headers: {
         "content-type": response.headers.get("content-type") || "application/json",
+        "x-admin-proxy-duration-ms": String(Date.now() - startedAt),
       },
     });
 
