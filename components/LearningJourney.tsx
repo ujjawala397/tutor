@@ -7,43 +7,43 @@ export function LearningJourney() {
   const journey = [
     {
       step: 1,
-      title: 'Book Demo',
-      desc: 'Schedule your free demo class',
+      title: 'Book Diagnostic',
+      desc: 'Start with a free baseline check',
       icon: BookOpen,
       color: 'from-blue-400 to-blue-600',
     },
     {
       step: 2,
-      title: 'Assessment',
-      desc: 'Evaluate current knowledge level',
+      title: 'Find Gaps',
+      desc: 'Spot weak topics fast',
       icon: Target,
       color: 'from-purple-400 to-purple-600',
     },
     {
       step: 3,
-      title: 'Meet Expert Tutor',
-      desc: 'Connect with your dedicated tutor',
+      title: 'Match Tutor',
+      desc: 'Get a best-fit subject expert',
       icon: Users,
       color: 'from-pink-400 to-pink-600',
     },
     {
       step: 4,
-      title: 'Learning Plan',
-      desc: 'Personalized study roadmap created',
+      title: '8-Week Plan',
+      desc: 'Follow a score-focused roadmap',
       icon: FileText,
       color: 'from-cyan-400 to-cyan-600',
     },
     {
       step: 5,
-      title: 'Weekly Reports',
-      desc: 'Track progress with detailed feedback',
+      title: 'Track Weekly',
+      desc: 'Review marks and next goals',
       icon: CheckCircle,
       color: 'from-green-400 to-green-600',
     },
     {
       step: 6,
-      title: 'Excellent Results',
-      desc: 'Achieve academic excellence',
+      title: 'See Grade Gains',
+      desc: 'Stronger tests and report cards',
       icon: Trophy,
       color: 'from-amber-400 to-amber-600',
     },
@@ -74,11 +74,11 @@ export function LearningJourney() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Your{' '}
             <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
-              Learning Journey
+              Grade-Growth Journey
             </span>
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Simple, structured path to academic success
+            Simple steps. Measurable progress.
           </p>
         </motion.div>
 

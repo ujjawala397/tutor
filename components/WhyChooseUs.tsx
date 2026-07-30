@@ -18,18 +18,14 @@ import {
 
 export function WhyChooseUs() {
   const features = [
-    { icon: Users, label: 'Personalized Learning' },
-    { icon: CheckCircle, label: 'Certified Tutors' },
-    { icon: BarChart3, label: 'Weekly Progress Reports' },
-    { icon: MessageSquare, label: 'Homework Assistance' },
-    { icon: Zap, label: 'Doubt Solving' },
-    { icon: Target, label: 'Small Batch Classes' },
-    { icon: Award, label: 'One-on-One Tutoring' },
-    { icon: Clock, label: 'Flexible Timings' },
-    { icon: Code, label: 'AI Learning Modules' },
-    { icon: BookOpen, label: 'Coding Projects' },
-    { icon: Lightbulb, label: 'Career Guidance' },
-    { icon: Shield, label: 'Interactive Quizzes' },
+    { icon: Users, label: 'Personalized Grade Plan' },
+    { icon: CheckCircle, label: 'Expert Tutors' },
+    { icon: BarChart3, label: 'Weekly Score Tracking' },
+    { icon: MessageSquare, label: 'Homework + Test Support' },
+    { icon: Award, label: '1:1 Classes' },
+    { icon: Clock, label: 'After-School Slots' },
+    { icon: Lightbulb, label: 'Concept Clarity First' },
+    { icon: Shield, label: 'Fast Doubt Solving' },
   ]
 
   const containerVariants = {
@@ -66,12 +62,11 @@ export function WhyChooseUs() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Why{' '}
             <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
-              Parents Choose Us
+              Grades Improve Here
             </span>
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            We provide comprehensive educational services with focus on individual
-            growth and excellence
+            Short plan. Clear goals. Better report cards.
           </p>
         </motion.div>
 

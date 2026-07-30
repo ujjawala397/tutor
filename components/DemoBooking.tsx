@@ -20,7 +20,7 @@ type FormData = {
 export function DemoBooking() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [countryCode, setCountryCode] = useState("");
+  const [countryCode, setCountryCode] = useState("+1");
   const [phoneNumber, setPhoneNumber] = useState("");
   const {
     register,
@@ -41,6 +41,11 @@ export function DemoBooking() {
     const normalized = `+${digitsOnly}`.slice(0, 5);
 
     setCountryCode(normalized);
+  };
+
+  const handlePhoneNumberChange = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 15);
+    setPhoneNumber(digitsOnly);
   };
 
   const onSubmit = async (data: FormData) => {
@@ -67,7 +72,7 @@ export function DemoBooking() {
 
     setTimeout(() => {
       setSubmitted(false);
-      setCountryCode("");
+      setCountryCode("+1");
       setPhoneNumber("");
       reset();
     }, 3000);
@@ -101,10 +106,10 @@ export function DemoBooking() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Book Your <span className="gradient-text">FREE Demo Class</span>
+            Book Your <span className="gradient-text">Free Diagnostic</span>
           </h2>
           <p className="text-lg text-foreground/60">
-            Fill the form below and our team will contact you within 24 hours
+            Get your short grade-growth plan.
           </p>
         </motion.div>
 
@@ -136,10 +141,10 @@ export function DemoBooking() {
                   <CheckCircle size={64} className="text-green-500 mx-auto" />
                 </motion.div>
                 <h3 className="text-2xl font-display font-bold text-foreground">
-                  Demo Booked Successfully!
+                  You are booked!
                 </h3>
                 <p className="text-foreground/70">
-                  We'll contact you soon with confirmation details.
+                  We will contact you shortly.
                 </p>
               </div>
             </motion.div>
@@ -206,7 +211,7 @@ export function DemoBooking() {
                       onChange={(e) => handleCountryCodeChange(e.target.value)}
                       inputMode="numeric"
                       pattern="^\+\d{1,4}$"
-                      title="Enter country code like +91"
+                      title="Enter country code like +1"
                       maxLength={5}
                       placeholder="Code"
                       required
@@ -218,7 +223,10 @@ export function DemoBooking() {
                     <input
                       type="tel"
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                      inputMode="numeric"
+                      pattern="^\d+$"
+                      title="Enter numbers only"
                       placeholder="Enter phone number"
                       className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 focus:border-primary focus:outline-none transition-all"
                     />

@@ -48,10 +48,10 @@ export function StudentSuccess() {
   }, [])
 
   const stats = [
-    { icon: Users, value: 10000, label: 'Students', suffix: '+' },
-    { icon: Trophy, value: 500, label: 'Projects Completed', suffix: '+' },
-    { icon: TrendingUp, value: 98, label: 'Improved Grades', suffix: '%' },
-    { icon: Smile, value: 95, label: 'Parent Satisfaction', suffix: '%' },
+    { icon: Users, value: 10000, label: 'Sessions Delivered', suffix: '+' },
+    { icon: Trophy, value: 500, label: 'Test Wins', suffix: '+' },
+    { icon: TrendingUp, value: 98, label: 'Grade Improvement', suffix: '%' },
+    { icon: Smile, value: 95, label: 'Happy Parents', suffix: '%' },
   ]
 
   const containerVariants = {
@@ -86,10 +86,10 @@ export function StudentSuccess() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Our <span className="gradient-text">Success Numbers</span>
+            Our <span className="gradient-text">Grade Results</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Proven results from students and parents across the globe
+            Real proof of steady academic progress.
           </p>
         </motion.div>
 

@@ -3,17 +3,21 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   const navLinks = [
-    { name: 'Home', id: 'home' },
-    { name: 'Courses', id: 'courses' },
-    { name: 'Tutors', id: 'tutors' },
-    { name: 'Reviews', id: 'reviews' },
-    { name: 'FAQ', id: 'faq' },
+    { name: 'Home', id: 'home' as const, type: 'section' as const },
+    { name: 'Courses', id: 'courses' as const, type: 'section' as const },
+    { name: 'Tutors', id: 'tutors' as const, type: 'section' as const },
+    { name: 'Reviews', id: 'reviews' as const, type: 'section' as const },
+    { name: 'FAQ', id: 'faq' as const, type: 'section' as const },
+    { name: 'Career', href: '/career' as const, type: 'route' as const },
   ]
 
   const scrollToSection = (id: string) => {
@@ -21,6 +25,22 @@ export function Navbar() {
       behavior: 'smooth',
       block: 'start',
     })
+    setIsOpen(false)
+  }
+
+  const handleNavClick = (link: (typeof navLinks)[number]) => {
+    if (link.type === 'route') {
+      router.push(link.href)
+      setIsOpen(false)
+      return
+    }
+
+    if (pathname === '/') {
+      scrollToSection(link.id)
+      return
+    }
+
+    router.push(`/#${link.id}`)
     setIsOpen(false)
   }
 
@@ -61,7 +81,7 @@ export function Navbar() {
                 key={link.name}
                 type="button"
                 whileHover={{ color: '#ffffff', scale: 1.2 }}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => handleNavClick(link)}
                 className="text-slate-300 hover:text-white transition-colors text-sm font-medium"
               >
                 {link.name}
@@ -105,7 +125,7 @@ export function Navbar() {
               <button
                 key={link.name}
                 type="button"
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => handleNavClick(link)}
                 className="block w-full text-left px-4 py-2 text-slate-300 hover:text-cyan-300 hover:bg-white/10 rounded-lg transition-all"
               >
                 {link.name}

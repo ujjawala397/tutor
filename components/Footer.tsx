@@ -68,8 +68,7 @@ export function Footer() {
                 </span>
               </div>
               <p className="text-slate-600 leading-relaxed text-sm">
-                Empowering students to excel in school and technology through
-                expert guidance and personalized learning.
+                Better grades through focused 1:1 tutoring.
               </p>
 
               {/* Social Links */}

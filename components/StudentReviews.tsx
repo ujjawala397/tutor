@@ -6,47 +6,47 @@ import { Star } from 'lucide-react'
 export function StudentReviews() {
   const reviews = [
     {
-      name: 'Arjun Kapoor',
-      parentName: 'Mrs. Meera Kapoor',
+      name: 'Ethan M.',
+      parentName: 'Parent: Sarah M.',
       rating: 5,
-      review: 'Fantastic improvement in my son\'s math scores. The tutors are incredibly patient and dedicated.',
-      gradeImprovement: 'B to A',
-      marks: 'From 72% to 92%',
-      studentInitials: 'AK',
-      parentInitials: 'MK',
+      review: 'In 9 weeks, Algebra II moved from C to A-.',
+      gradeImprovement: 'C to A-',
+      marks: 'Algebra II: +18 points',
+      studentInitials: 'EM',
+      parentInitials: 'SM',
       bg: 'from-blue-400 to-blue-600',
     },
     {
-      name: 'Priya Sharma',
-      parentName: 'Mr. Rajiv Sharma',
+      name: 'Olivia R.',
+      parentName: 'Parent: Daniel R.',
       rating: 5,
-      review: 'The personalized approach and weekly reports have really helped my daughter\'s academic journey.',
-      gradeImprovement: 'A- to A+',
-      marks: 'From 88% to 96%',
-      studentInitials: 'PS',
-      parentInitials: 'RS',
+      review: 'Weekly reports made every quiz goal clear.',
+      gradeImprovement: 'B+ to A',
+      marks: 'AP Biology: +14 points',
+      studentInitials: 'OR',
+      parentInitials: 'DR',
       bg: 'from-purple-400 to-purple-600',
     },
     {
-      name: 'Ayush Verma',
-      parentName: 'Mr. Nitin Verma',
+      name: 'Noah T.',
+      parentName: 'Parent: Lisa T.',
       rating: 5,
-      review: 'My son went from struggling with coding to loving it. The instructors are world-class!',
-      gradeImprovement: 'C to A',
-      marks: 'From 65% to 94%',
-      studentInitials: 'AV',
-      parentInitials: 'NV',
+      review: 'SAT Math improved by 120 points in 12 weeks.',
+      gradeImprovement: '+120 SAT Math',
+      marks: 'SAT Math: 590 to 710',
+      studentInitials: 'NT',
+      parentInitials: 'LT',
       bg: 'from-green-400 to-green-600',
     },
     {
-      name: 'Ananya Singh',
-      parentName: 'Mrs. Priya Singh',
+      name: 'Mia J.',
+      parentName: 'Parent: Kevin J.',
       rating: 5,
-      review: 'Highly recommend! The demo class convinced us within minutes. Fantastic platform.',
-      gradeImprovement: 'B+ to A+',
-      marks: 'From 85% to 98%',
-      studentInitials: 'AS',
-      parentInitials: 'PS',
+      review: 'Focused AP prep helped her score a 5.',
+      gradeImprovement: 'AP Calculus: 5',
+      marks: 'Course grade: B to A',
+      studentInitials: 'MJ',
+      parentInitials: 'KJ',
       bg: 'from-pink-400 to-pink-600',
     },
   ]
@@ -89,7 +89,7 @@ export function StudentReviews() {
             </span>
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Real results from real students and satisfied parents
+            Real GPA and test-score gains from families worldwide
           </p>
         </motion.div>
 
@@ -145,7 +145,7 @@ export function StudentReviews() {
                       </motion.div>
                       <div>
                         <p className="font-semibold text-sm text-slate-900">{review.name}</p>
-                        <p className="text-xs text-slate-600">Student</p>
+                        <p className="text-xs text-slate-600">{review.parentName}</p>
                       </div>
                     </div>
 

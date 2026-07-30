@@ -8,42 +8,42 @@ export function Courses() {
     {
       icon: Calculator,
       name: 'Mathematics',
-      desc: 'Master algebra, geometry, calculus and problem solving',
+      desc: 'Raise math scores in Algebra, Geometry, Calculus',
       ageGroup: 'Grades 3-12',
       color: 'from-blue-400 to-blue-600',
     },
     {
       icon: Microscope,
       name: 'Science',
-      desc: 'Physics, Chemistry, Biology with hands-on experiments',
+      desc: 'Boost Physics, Chemistry, Biology grades',
       ageGroup: 'Grades 3-12',
       color: 'from-green-400 to-green-600',
     },
     {
       icon: Code,
       name: 'Computer Science',
-      desc: 'Full-stack web development and software engineering',
+      desc: 'Improve CS grades with practical coding',
       ageGroup: 'Grades 3-12',
       color: 'from-purple-400 to-purple-600',
     },
     {
       icon: Cpu,
       name: 'Artificial Intelligence',
-      desc: 'Machine learning, neural networks, and AI applications',
+      desc: 'Build AI skills with guided projects',
       ageGroup: 'Grades 3-12',
       color: 'from-pink-400 to-pink-600',
     },
     {
       icon: Zap,
       name: 'Python Programming',
-      desc: 'Learn Python from basics to advanced concepts',
+      desc: 'Learn Python fast and score higher',
       ageGroup: 'Grades 3-12',
       color: 'from-indigo-400 to-indigo-600',
     },
     {
       icon: Code,
       name: 'Web Development',
-      desc: 'HTML, CSS, JavaScript, React and modern web tech',
+      desc: 'Create real apps and strengthen school projects',
       ageGroup: 'Grades 3-12',
       color: 'from-cyan-400 to-cyan-600',
     },
@@ -81,10 +81,10 @@ export function Courses() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Our <span className="gradient-text">Premium Courses</span>
+            Our <span className="gradient-text">Grade-Boost Courses</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Comprehensive curriculum designed for academic excellence and future skills
+            Short, focused programs that improve marks.
           </p>
         </motion.div>
 

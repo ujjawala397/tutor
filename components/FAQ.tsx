@@ -11,32 +11,32 @@ export function FAQ() {
     {
       question: 'How are tutors selected?',
       answer:
-        'Our tutors undergo rigorous screening including background checks, qualification verification, and teaching demonstrations. We only select the top 5% of applicants who meet our quality standards.',
+        'We match students with proven subject experts based on grade goals.',
     },
     {
       question: 'Can I change tutors?',
       answer:
-        "Yes! If your'e not satisfied with your tutor within the first 2 sessions, we'll assign you a different tutor at no additional cost.",
+        'Yes. Free tutor switch in the first 2 sessions.',
     },
     {
-      question: 'Do you provide online classes?',
+      question: 'Do you offer online tutoring across time zones?',
       answer:
-        'Absolutely! We offer online classes only. You can choose the mode that works best for you and switch anytime.',
+        'Yes. We support global time zones, including after-school slots.',
     },
     {
-      question: 'How are progress reports shared?',
+      question: 'How quickly will we see progress?',
       answer:
-        'We send detailed progress reports every week via email . Reports include performance metrics, strengths, areas for improvement, and personalized recommendations.',
+        'Most students show clear progress within 4-8 weeks.',
     },
     {
-      question: 'How much does it cost?',
+      question: 'Do you support SAT, ACT, and AP prep?',
       answer:
-        'Our pricing is flexible and depends on the subject, tutor experience, and class frequency. Contact us for a personalized quote after the demo class.',
+        'Yes. SAT Math, ACT Math, AP, and core school subjects.',
     },
     {
-      question: 'What subjects do you teach?',
+      question: 'Is there a long-term contract?',
       answer:
-        'We teach Mathematics, Physics, Chemistry, Biology, Computer Science, Python, Java, Web Development, AI/ML, and many more. Contact us for more information.',
+        'No long-term contract. Continue only if you see progress.',
     },
   ]
 
@@ -78,7 +78,7 @@ export function FAQ() {
             </span>
           </h2>
           <p className="text-lg text-slate-300">
-            Find answers to common questions about our tutoring services
+            Quick answers for parents.
           </p>
         </motion.div>
 

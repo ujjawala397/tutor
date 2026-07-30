@@ -6,19 +6,19 @@ import { Quote } from 'lucide-react'
 export function TutorQuotes() {
   const quotes = [
     {
-      text: 'Our mission is to build confidence, curiosity, and lifelong learning.',
+      text: 'Clarity first. Grades follow.',
       author: 'Dr. Priya Sharma',
       initials: 'PS',
       bg: 'from-blue-400 to-blue-600',
     },
     {
-      text: "We don't just improve grades—we help students love learning.",
+      text: 'Small wins each week create big report-card gains.',
       author: 'Amit Verma',
       initials: 'AV',
       bg: 'from-purple-400 to-purple-600',
     },
     {
-      text: 'Our AI and coding curriculum prepares students for the future.',
+      text: 'Better concepts today. Better scores tomorrow.',
       author: 'Rajesh Kumar',
       initials: 'RK',
       bg: 'from-pink-400 to-pink-600',
@@ -59,7 +59,7 @@ export function TutorQuotes() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             What Our{' '}
             <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
-              Tutors Say
+              Tutors Promise
             </span>
           </h2>
         </motion.div>

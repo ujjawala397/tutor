@@ -75,10 +75,10 @@ export function Tutors() {
           className="text-center mb-10"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Meet Our <span className="gradient-text">Expert Tutors</span>
+            Meet Tutors Who <span className="gradient-text">Raise Scores</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Highly qualified professionals dedicated to your success
+            Subject experts focused on grade gains.
           </p>
         </motion.div>
 

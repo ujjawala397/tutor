@@ -10,18 +10,18 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'CheggTutor | Best Online Tutoring for Grades 3-12',
+  title: 'CheggTutor | Online Math, Science, SAT, ACT and AP Tutoring',
   description:
-    'CheggTutor helps students in Grades 3-12 excel in Maths, Science, Coding, and AI with expert tutors, personalized learning plans, and free demo classes.',
+    'CheggTutor helps Grades 3-12 students improve grades and test scores with expert 1:1 tutoring.',
   keywords: [
-    'tutoring for grade 3 to 12',
-    'online maths tutor',
-    'science tutoring',
-    'coding classes for students',
-    'AI tutoring',
-    'CBSE tutoring',
-    'best online tutor for students',
-    'free demo class',
+    'online math tutor',
+    'sat math tutor online',
+    'act math tutoring',
+    'ap calculus tutor',
+    'ap physics tutor',
+    'online science tutor for high school',
+    'gpa improvement tutoring',
+    'free diagnostic tutoring session',
   ],
   applicationName: 'CheggTutor',
   authors: [{ name: 'CheggTutor' }],
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cheggtutor.com'),
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'CheggTutor | Tutoring for Grades 3-12',
+    title: 'CheggTutor | 1:1 Tutoring for Grades, SAT, ACT and AP Success',
     description:
-      'Expert one-on-one tutoring for students in Grades 3-12. Build confidence in Maths, Science, Coding, and AI with a structured learning plan.',
+      '1:1 tutoring that improves grades, SAT/ACT scores, and AP outcomes.',
     siteName: 'CheggTutor',
     url: 'https://cheggtutor.com/',
     type: 'website',
-    locale: 'en_IN',
+    locale: 'en',
     images: [
       {
         url: '/og-image.svg',
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CheggTutor | Tutoring for Grades 3-12',
+    title: 'CheggTutor | Online Tutoring for GPA, SAT, ACT and AP',
     description:
-      'Flexible and affordable online tutoring for Grades 3-12 with live expert support.',
+      'Short plans, expert tutors, and measurable grade gains.',
     images: ['/og-image.svg'],
   },
   alternates: {

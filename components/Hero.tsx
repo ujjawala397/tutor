@@ -110,8 +110,7 @@ export function Hero() {
             {trustBadges.map((badge, index) => (
               <motion.div
                 key={index}
-                whileHover={{ y: -5 }}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-white/20"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 "
               >
                 <span className="text-2xl">{badge.value}</span>
                 <div>

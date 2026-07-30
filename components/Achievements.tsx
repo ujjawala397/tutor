@@ -7,26 +7,26 @@ export function Achievements() {
   const achievements = [
     {
       icon: Medal,
-      title: 'Olympiad Winners',
-      desc: '45+ students qualified for national olympiads',
+      title: 'Top Score Jumps',
+      desc: '45+ students improved by a full grade band',
       color: 'from-gold-400 to-yellow-600',
     },
     {
       icon: Rocket,
-      title: 'Coding Competition',
-      desc: '120+ students won coding competitions nationwide',
+      title: 'Exam Readiness',
+      desc: '120+ students hit target test scores',
       color: 'from-purple-400 to-purple-600',
     },
     {
       icon: Sparkles,
-      title: 'Science Fair',
-      desc: '85+ students showcased award-winning projects',
+      title: 'Science Progress',
+      desc: '85+ students improved science grades',
       color: 'from-pink-400 to-pink-600',
     },
     {
       icon: Award,
-      title: 'AI Hackathon',
-      desc: '60+ students participated in AI innovation events',
+      title: 'Math Mastery',
+      desc: '60+ students moved from B to A range',
       color: 'from-cyan-400 to-cyan-600',
     },
   ]
@@ -65,11 +65,11 @@ export function Achievements() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Our{' '}
             <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
-              Achievements
+              Grade Wins
             </span>
           </h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Celebrating the remarkable accomplishments of our students
+            Short milestones. Big academic outcomes.
           </p>
         </motion.div>
 
